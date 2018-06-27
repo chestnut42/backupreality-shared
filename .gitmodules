@@ -1,4 +1,4 @@
 [submodule "repository"]
 	path = repository
-	url = ./
+	url = git@github.com:chestnut42/backupreality-shared.git
 	branch = repository
