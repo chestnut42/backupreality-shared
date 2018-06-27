@@ -34,10 +34,26 @@ public class TokenCookieHandler
 
     public void setToken(HttpServletResponse response, String token)
     {
-        Cookie tokenCookie = new Cookie(this.tokenCookieName, token);
+        this.setTokenCookie(response, Optional.of(token));
+    }
+
+
+    public void removeToken(HttpServletResponse response)
+    {
+        this.setTokenCookie(response, Optional.empty());
+    }
+
+
+    private void setTokenCookie(HttpServletResponse response, Optional<String> value)
+    {
+        Cookie tokenCookie = new Cookie(this.tokenCookieName, value.orElse(null));
         tokenCookie.setSecure(this.isSecure);
         tokenCookie.setHttpOnly(true);
         tokenCookie.setPath("/");
+        if (!value.isPresent())
+        {
+            tokenCookie.setMaxAge(0);
+        }
 
         response.addCookie(tokenCookie);
     }
