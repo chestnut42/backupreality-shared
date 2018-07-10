@@ -45,16 +45,16 @@ public class TokenSignatureService
         byte[] signature = macSigner.sign(secret);
 
         return new TokenSignature(
-                KeyData.ofRawData(secret).toBase64String(),
-                KeyData.ofRawData(signature).toBase64String()
+                KeyData.ofRawData(secret).toBase64URLString(),
+                KeyData.ofRawData(signature).toBase64URLString()
         );
     }
 
 
     public boolean verifySignature(TokenSignature tokenSignature)
     {
-        byte[] secret = KeyData.ofBase64String(tokenSignature.secret).getData();
-        byte[] signature = KeyData.ofBase64String(tokenSignature.signature).getData();
+        byte[] secret = KeyData.ofBase64URLString(tokenSignature.secret).getData();
+        byte[] signature = KeyData.ofBase64URLString(tokenSignature.signature).getData();
 
         byte[] checkSignature = macSigner.sign(secret);
 

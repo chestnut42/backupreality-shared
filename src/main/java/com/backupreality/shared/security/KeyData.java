@@ -11,13 +11,17 @@ public class KeyData
         return new KeyData(data);
     }
 
-
     public static KeyData ofBase64String(String base64String)
     {
         byte[] data = Base64.getDecoder().decode(base64String);
         return ofRawData(data);
     }
 
+    public static KeyData ofBase64URLString(String base64URLString)
+    {
+        byte[] data = Base64.getUrlDecoder().decode(base64URLString);
+        return ofRawData(data);
+    }
 
     public static KeyData ofHexString(String hexString)
     {
@@ -43,6 +47,11 @@ public class KeyData
     public String toBase64String()
     {
         return Base64.getEncoder().encodeToString(data);
+    }
+
+    public String toBase64URLString()
+    {
+        return Base64.getUrlEncoder().encodeToString(data);
     }
 
     public String toHEXString()
