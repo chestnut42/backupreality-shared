@@ -26,5 +26,31 @@ public class OptionalUtils
                         .collect(Collectors.toList())
         );
     }
+
+
+    public static Optional<Long> parseLong(String str)
+    {
+        try
+        {
+            return Optional.of(Long.valueOf(str));
+        }
+        catch (NumberFormatException ex)
+        {
+            return Optional.empty();
+        }
+    }
+
+
+    public static Optional<Double> parseDouble(String str)
+    {
+        try
+        {
+            return Optional.of(Double.valueOf(str));
+        }
+        catch (NumberFormatException ex)
+        {
+            return Optional.empty();
+        }
+    }
 }
 
