@@ -1,5 +1,7 @@
 package com.backupreality.shared.exceptions;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.annotation.PostConstruct;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ public class ExceptionTranslator
     private static final Class<? extends Throwable> DEFAULT_EXCEPTION_BASE_CLASS = Exception.class;
 
 
+    @Autowired
     @ExceptionTranslationSource
     private final List<Object> translationBeans = null;
 
