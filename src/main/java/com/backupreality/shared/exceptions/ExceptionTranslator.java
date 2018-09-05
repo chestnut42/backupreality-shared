@@ -15,7 +15,7 @@ public class ExceptionTranslator
     private static final Class<? extends Throwable> DEFAULT_EXCEPTION_BASE_CLASS = Exception.class;
 
 
-    @Autowired
+    @Autowired(required = false)
     @ExceptionTranslationSource
     private final List<Object> translationBeans = null;
 
