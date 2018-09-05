@@ -39,7 +39,7 @@ public class ExceptionTranslator
     {
         List<ExceptionTranslationImpl> resultImpl = new ArrayList<>();
 
-        for (Object bean : translationBeans)
+        for (Object bean : Optional.ofNullable(translationBeans).orElse(new ArrayList<>()))
         {
             // search for annotated methods
             for (Method method : bean.getClass().getDeclaredMethods())
